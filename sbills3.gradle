@@ -1,7 +1,5 @@
 apply plugin: 'java'
-apply plugin: 'application'
-
-defaultTasks 'compileJava', 'compileTestJava', 'javadoc', 'clean', 'jar'
+defaultTasks 'jar'
 
 compileJava {
     doLast {
@@ -28,22 +26,11 @@ clean {
 }
 
 jar {
-    baseName = 'sbills3'
-    version =  '0.1'
     manifest {
-     attributes  'Implementation-Title' : 'M2 sbills3' ,
-                 'Implementation-Version' : version,
-                 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain'
+        attributes  'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+                    'Implementation-Title' : 'sbills3 M2 jar'
     }
     doLast {
         println "creating executable jar for project..."
     }
-}
-repositories {
-   flatDir {
-       dirs 'lib'
-   }
-}
-dependencies {
-    compile name: 'resources'
 }
