@@ -1,36 +1,13 @@
 apply plugin: 'java'
+
 defaultTasks 'jar'
 
-compileJava {
-    doLast {
-        println "compiling and building project..."
-    }
-}
-
-compileTestJava {
-    doLast {
-        println "compiling unit tests..."
-    }
-}
-
-javadoc {
-    doLast {
-        println "creating html documentation for this project..."
-    }
-}
-
-clean {
-    doLast {
-        println "removing extra/unneeded files..."
-    }
+dependencies {
+    compile files("./lib/resources.jar")
 }
 
 jar {
     manifest {
-        attributes  'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
-                    'Implementation-Title' : 'sbills3 M2 jar'
-    }
-    doLast {
-        println "creating executable jar for project..."
+        attributes("Main-Class": "edu.gatech.oad.antlab.pkg1.AntLabMain", "Class-Path" : "../../lib/resources.jar")
     }
 }
